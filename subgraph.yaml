@@ -1,0 +1,44 @@
+specVersion: 0.0.1
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum
+    name: LuckyMoney
+    network: bsc
+    source:
+      address: "0xe93577cf0590c3cd7eceb6cb68d84b2a717c15bb"
+      abi: LuckyMoney
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.5
+      language: wasm/assemblyscript
+      entities:
+        - Collect
+        - Create
+        - Disperse
+        - Distribute
+        - FeeRateUpdate
+        - FeeReceiverUpdate
+        - OwnershipUpdate
+        - RewardCollect
+      abis:
+        - name: LuckyMoney
+          file: ./abis/LuckyMoney.json
+      eventHandlers:
+        - event: Collect(indexed address,indexed address,uint8,uint256,bytes32)
+          handler: handleCollect
+        - event: Create(indexed bytes32,address,uint256,uint256,uint256,uint256,uint256)
+          handler: handleCreate
+        - event: Disperse(indexed address,address,uint256,uint256)
+          handler: handleDisperse
+        - event: Distribute(indexed bytes32,indexed address,uint256,uint256)
+          handler: handleDistribute
+        - event: FeeRateUpdate(uint16)
+          handler: handleFeeRateUpdate
+        - event: FeeReceiverUpdate(address)
+          handler: handleFeeReceiverUpdate
+        - event: OwnershipUpdate(address,address)
+          handler: handleOwnershipUpdate
+        - event: RewardCollect(indexed address,indexed address,uint8,uint256)
+          handler: handleRewardCollect
+      file: ./src/lucky-money.ts
