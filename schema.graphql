@@ -3,4 +3,23 @@ type ExampleEntity @entity {
   count: BigInt!
   _collector: Bytes! # address
   _tokenAddress: Bytes! # address
+  blocknumber: BigInt!
+  txhash: String!
+  tvalue: BigDecimal!
+  fee: BigDecimal!
+  gasPrice: BigDecimal!
 }
+
+type DisperseEntity @entity {
+  id: ID!
+  blocknumber: BigInt!
+  txhash: String!
+  tvalue: BigDecimal!
+  fee: BigDecimal!
+  gasPrice: BigDecimal!
+  blockJson: String!
+  transJson: String!
+  receiptJson: String!
+}
+
+

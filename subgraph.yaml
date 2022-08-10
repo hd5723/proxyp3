@@ -1,4 +1,4 @@
-specVersion: 0.0.1
+specVersion: 0.0.4
 schema:
   file: ./schema.graphql
 dataSources:
@@ -6,11 +6,12 @@ dataSources:
     name: LuckyMoney
     network: bsc
     source:
-      address: "0xe93577cf0590c3cd7eceb6cb68d84b2a717c15bb"
+      address: "0x43bf78a82bbc334b42dc2f9708d667d6ade79ec6"
       abi: LuckyMoney
+      startBlock: 20254310
     mapping:
       kind: ethereum/events
-      apiVersion: 0.0.5
+      apiVersion: 0.0.7
       language: wasm/assemblyscript
       entities:
         - Collect
